@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
             algorithm: "gzip",
             include: [/dist/],
             pathMapper: (assetPath) => {
-                return assetPath.replace("dist/", "");
+                return assetPath.replace("dist/", "sy-header-number/");
             },
         }));
     } else {
