@@ -9,7 +9,7 @@
     "build": "webpack --mode production"
   },
   "keywords": ["siyuan", "header", "numbering", "序号"],
-  "author": "wefun",
+  "author": "sy-header-number",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.29.0",

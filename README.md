@@ -1,5 +1,6 @@
 # 标题序号
 
+github源代码地址：https://github.com/xiaohuiduan/sy-header-number
 基于 [siyuan-auto-seq-number](https://github.com/zxkmm/siyuan-auto-seq-number) 二次开发的思源笔记标题自动编号插件。
 
 ## 功能特性
