@@ -2,7 +2,7 @@
   "name": "sy-header-number",
   "author": "sy-header-number",
   "url": "https://github.com/xiaohuiduan/sy-header-number",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "minAppVersion": "2.11.1",
   "backends": [
     "all"
