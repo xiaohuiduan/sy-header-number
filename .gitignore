@@ -9,8 +9,8 @@ lib/
 /index.css
 /i18n/
 
-# Lock files (使用 pnpm)
-package-lock.json
+# Lock files
+pnpm-lock.yaml
 
 # IDE files
 .vscode/
