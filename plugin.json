@@ -1,0 +1,31 @@
+{
+  "name": "sy-header-number",
+  "author": "wefun",
+  "url": "https://github.com/wefun/sy-header-number",
+  "version": "3.0.0",
+  "minAppVersion": "2.11.1",
+  "backends": [
+    "all"
+  ],
+  "frontends": [
+    "all"
+  ],
+  "displayName": {
+    "default": "SY Header Number",
+    "zh_CN": "标题序号"
+  },
+  "description": {
+    "default": "Auto generate sequence number for headers in SiYuan Note",
+    "zh_CN": "自动为思源笔记标题生成序号"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README.md"
+  },
+  "keywords": [
+    "序号",
+    "标题",
+    "header",
+    "编号"
+  ]
+}

@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+lib/
+*.zip
+/index.js
+/index.css
+/i18n/
+
+# Lock files (使用 pnpm)
+package-lock.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache files
+.cache/
+.eslintcache
+
+# TypeScript files
+*.tsbuildinfo

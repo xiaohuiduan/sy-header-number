@@ -1,0 +1,197 @@
+.sy-header-number-settings {
+    /* 设置面板整体样式 */
+    .b3-label {
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .b3-label__text {
+        font-size: 14px;
+    }
+
+    .b3-label__desc {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+
+    .setting-item__action {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 8px;
+        flex-wrap: wrap;
+
+        .b3-text-field {
+            padding: 8px 12px;
+            border: 1px solid var(--b3-border-color);
+            border-radius: 4px;
+            background: var(--b3-theme-background);
+            color: var(--b3-theme-on-background);
+            font-size: 14px;
+            transition: all 0.2s ease;
+            height: 32px;
+            box-sizing: border-box;
+
+            &:focus {
+                border-color: var(--b3-theme-primary);
+                box-shadow: 0 0 0 2px rgba(var(--b3-theme-primary-rgb), 0.1);
+                outline: none;
+            }
+
+            &::placeholder {
+                color: var(--b3-theme-on-surface);
+                opacity: 0.5;
+            }
+        }
+
+        .b3-switch {
+            margin: 0;
+            position: relative;
+            top: 0;
+        }
+
+        /* 级别启用开关 */
+        .level-toggle-option {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            white-space: nowrap;
+            height: 32px;
+        }
+
+        .level-toggle-label {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            min-width: 70px;
+            color: var(--b3-theme-on-background);
+        }
+
+        /* 格式输入容器 */
+        .format-input-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin-left: 12px;
+        }
+
+        /* 中文数字选项 */
+        .chinese-number-option {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            white-space: nowrap;
+            height: 32px;
+            margin-left: 12px;
+        }
+
+        .chinese-number-label {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            writing-mode: horizontal-tb;
+            min-width: 84px;
+            color: var(--b3-theme-on-background);
+        }
+
+        /* 格式预览 */
+        .format-preview {
+            width: 100%;
+            margin-top: 4px;
+            padding: 4px 12px;
+            font-size: 13px;
+            color: var(--b3-theme-on-surface);
+            opacity: 0.7;
+            font-style: italic;
+
+            &.disabled {
+                opacity: 0.4;
+                font-style: normal;
+            }
+        }
+
+        .fn__flex-1 {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+    }
+
+    /* 设置项之间的间距 */
+    .b3-setting-item {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--b3-border-color);
+        opacity: 0.8;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* 分隔线 */
+    .fn__hr {
+        margin: 16px 0;
+        background-color: var(--b3-border-color);
+        height: 1px;
+        border: 0;
+        opacity: 0.5;
+    }
+
+    /* 按钮样式 */
+    .b3-button {
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+
+        &.b3-button--outline {
+            border: 1px solid var(--b3-theme-primary);
+            color: var(--b3-theme-primary);
+            background: transparent;
+
+            &:hover {
+                background-color: var(--b3-theme-primary-lightest);
+            }
+        }
+    }
+}
+
+/* 顶部工具栏按钮样式 */
+.toolbar__item--sy-header-number {
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: var(--b3-theme-background-light);
+    }
+
+    &.active {
+        background-color: var(--b3-theme-primary-lightest);
+        color: var(--b3-theme-primary);
+    }
+}
+
+/* 状态栏样式 */
+.status__item--sy-header-number {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 100%;
+
+    &:hover {
+        background-color: var(--b3-theme-background-light);
+    }
+
+    &.active {
+        color: var(--b3-theme-primary);
+    }
+
+    .status-icon {
+        margin-right: 4px;
+        font-size: 14px;
+    }
+}
