@@ -192,12 +192,6 @@
 
     .status-icon {
         margin-right: 4px;
-        display: inline-flex;
-        align-items: center;
-
-        svg {
-            width: 16px;
-            height: 16px;
-        }
+        font-size: 14px;
     }
 }

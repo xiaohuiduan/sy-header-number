@@ -41,7 +41,6 @@ export default class HeaderNumberPlugin extends Plugin {
     private activeProtyle: any;
     private shouldUpdate = false;
     private topBarElement: HTMLElement | null = null;
-    private statusBarElement: HTMLElement | null = null;
     private version = "";
     // 增量更新缓存: docId → (blockId → 已添加的序号前缀)
     private lastAppliedNumbers: Map<string, Map<string, string>> = new Map();
@@ -58,7 +57,6 @@ export default class HeaderNumberPlugin extends Plugin {
 
         this.initSettings();
         this.initTopBar();
-        this.initStatusBar();
 
         this.eventBus.on("loaded-protyle-dynamic", this.onProtyleLoaded);
         this.eventBus.on("loaded-protyle-static", this.onProtyleLoaded);
@@ -316,33 +314,21 @@ export default class HeaderNumberPlugin extends Plugin {
 
     // ==================== 顶部工具栏 ====================
 
-    private ICON_SVG = `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-  <rect x="14" y="14" width="92" height="92" rx="16" fill="#FEF08A" stroke="#334155" stroke-width="3"/>
-  <rect x="28" y="26" width="64" height="72" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="3" stroke-linejoin="round"/>
-  <text x="36" y="48" font-family="sans-serif" font-weight="bold" font-size="15" fill="#F97316">1.</text>
-  <path d="M 52 44 Q 64 42 76 45" fill="none" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
-  <text x="44" y="66" font-family="sans-serif" font-weight="bold" font-size="12" fill="#0EA5E9">1.1</text>
-  <text x="44" y="84" font-family="sans-serif" font-weight="bold" font-size="12" fill="#0EA5E9">1.2</text>
-  <path d="M 62 62 Q 70 60 76 63" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M 62 80 Q 68 78 72 80" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M 70 86 L 74 90 L 82 80" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`;
-
     private initTopBar() {
         this.topBarElement = this.addTopBar({
-            icon: this.ICON_SVG,
+            icon: `<svg t="1764915557986" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11201" width="200" height="200"><path d="M684.536986 262.312329H411.00274c-18.235616 0-32.263014 14.027397-32.263014 29.457534v67.331507c0 16.832877 14.027397 29.457534 32.263014 29.457534h273.534246c18.235616 0 32.263014-14.027397 32.263014-29.457534v-67.331507c0-16.832877-15.430137-29.457534-32.263014-29.457534z m-5.610959 91.178082H416.613699v-56.109589h262.312328v56.109589z" fill="#464646" p-id="11202"></path><path d="M416.613699 297.380822h262.312328v56.109589H416.613699z" fill="#DE777A" p-id="11203"></path><path d="M684.536986 516.208219H411.00274c-18.235616 0-32.263014 14.027397-32.263014 29.457534v67.331507c0 16.832877 14.027397 29.457534 32.263014 29.457535h273.534246c18.235616 0 32.263014-14.027397 32.263014-29.457535v-67.331507c0-16.832877-15.430137-29.457534-32.263014-29.457534z m-5.610959 91.178082H416.613699v-56.109589h262.312328v56.109589z" fill="#464646" p-id="11204"></path><path d="M416.613699 551.276712h262.312328v56.109589H416.613699z" fill="#DE777A" p-id="11205"></path><path d="M242.673973 425.030137V280.547945c-9.819178 7.013699-22.443836 12.624658-35.068494 16.832877l-7.013698 2.805479v-42.082191l4.208219-1.40274c8.416438-1.40274 15.430137-5.610959 25.249315-9.819178 8.416438-5.610959 16.832877-11.221918 22.443836-16.832877l1.402739-1.40274h30.860274v197.786302h-42.082191v-1.40274zM329.643836 671.912329H180.953425v-5.610959c0-19.638356 7.013699-35.068493 21.041096-49.095891 7.013699-7.013699 22.443836-18.235616 46.290411-32.263013 11.221918-7.013699 21.041096-12.624658 26.652054-18.235617 7.013699-7.013699 11.221918-15.430137 11.221918-22.443835s-2.805479-12.624658-7.013699-16.832877c-4.208219-2.805479-11.221918-5.610959-22.443835-5.610959-9.819178 0-18.235616 2.805479-22.443836 8.416438-5.610959 5.610959-8.416438 15.430137-8.416438 26.652055v5.610959H182.356164v-5.610959c0-21.041096 7.013699-37.873973 21.041096-50.49863 14.027397-14.027397 32.263014-19.638356 54.70685-19.638356 19.638356 0 36.471233 5.610959 50.49863 15.430137 14.027397 11.221918 19.638356 23.846575 19.638356 42.082192 0 16.832877-7.013699 30.860274-21.041096 44.887671-7.013699 7.013699-21.041096 15.430137-42.082192 28.054794-14.027397 8.416438-22.443836 14.027397-28.054794 19.638357h89.775342v35.068493h2.80548z" fill="#464646" p-id="11206"></path><path d="M448.876712 0C201.994521 0 0 201.994521 0 448.876712s201.994521 448.876712 448.876712 448.876713 448.876712-201.994521 448.876713-448.876713S695.758904 0 448.876712 0z m0 848.657534c-220.230137 0-402.586301-178.147945-402.586301-402.586301C46.290411 224.438356 224.438356 42.082192 448.876712 42.082192 669.106849 42.082192 851.463014 220.230137 851.463014 444.668493S669.106849 848.657534 448.876712 848.657534z" fill="#464646" p-id="11207"></path></svg>`,
             title: this.i18n.toggleHeaderNumber,
             callback: async () => {
                 if (this.isDocEnabled(this.activeDocId)) {
                     await this.clearDocNumbering(this.activeProtyle);
                     showMessage(this.i18n.numberingDisabled);
                     this.disableDoc(this.activeDocId);
-                    this.updateTopBarState(false);
+                    this.topBarElement?.classList.remove("active");
                 } else {
                     await this.updateDocNumbering(this.activeProtyle);
                     showMessage(this.i18n.numberingEnabled);
                     this.enableDoc(this.activeDocId);
-                    this.updateTopBarState(true);
+                    this.topBarElement?.classList.add("active");
                 }
             },
         });
@@ -353,43 +339,6 @@ export default class HeaderNumberPlugin extends Plugin {
                 this.topBarElement.classList.add("active");
             }
         }
-    }
-
-    // ==================== 状态栏 ====================
-
-    private initStatusBar() {
-        this.statusBarElement = this.addStatusBar({
-            html: `<span class="status-icon">${this.ICON_SVG}</span><span class="status-text">${this.i18n.statusDisabled}</span>`,
-        });
-        if (this.statusBarElement) {
-            this.statusBarElement.classList.add("status__item--sy-header-number");
-            this.statusBarElement.addEventListener("click", () => {
-                if (this.activeDocId) {
-                    if (this.isDocEnabled(this.activeDocId)) {
-                        this.clearDocNumbering(this.activeProtyle);
-                        showMessage(this.i18n.numberingDisabled);
-                        this.disableDoc(this.activeDocId);
-                        this.updateTopBarState(false);
-                    } else {
-                        this.updateDocNumbering(this.activeProtyle);
-                        showMessage(this.i18n.numberingEnabled);
-                        this.enableDoc(this.activeDocId);
-                        this.updateTopBarState(true);
-                    }
-                }
-            });
-        }
-    }
-
-    private updateStatusBarState(enabled: boolean) {
-        if (!this.statusBarElement) return;
-        const textEl = this.statusBarElement.querySelector(".status-text");
-        if (textEl) {
-            textEl.textContent = enabled
-                ? this.i18n.statusEnabled
-                : this.i18n.statusDisabled;
-        }
-        this.statusBarElement.classList.toggle("active", enabled);
     }
 
     // ==================== 事件处理 ====================
@@ -493,7 +442,6 @@ export default class HeaderNumberPlugin extends Plugin {
                 this.topBarElement.classList.remove("active");
             }
         }
-        this.updateStatusBarState(enabled);
     }
 
     // ==================== 文档启用/禁用 ====================
