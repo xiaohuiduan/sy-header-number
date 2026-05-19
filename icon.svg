@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <!-- 核心：手绘边缘抖动滤镜 -->
+    <filter id="sketch" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+
+  <!-- 背景底色 (错位阴影效果，增加复古印刷感) -->
+  <rect x="18" y="22" width="92" height="92" rx="20" fill="#FDBA74" filter="url(#sketch)"/>
+  
+  <!-- 背景主色块 (奶油黄) -->
+  <rect x="14" y="14" width="92" height="92" rx="20" fill="#FEF08A" stroke="#334155" stroke-width="3" filter="url(#sketch)"/>
+
+  <!-- 纸张错位阴影 -->
+  <rect x="32" y="30" width="64" height="76" rx="4" fill="#334155" opacity="0.15" filter="url(#sketch)"/>
+
+  <!-- 纸张主体 (纯白 + 深灰描边) -->
+  <rect x="28" y="26" width="64" height="76" rx="4" fill="#FFFFFF" stroke="#334155" stroke-width="3" stroke-linejoin="round" filter="url(#sketch)"/>
+
+  <!-- 内容：一级标题 "1." -->
+  <text x="36" y="48" font-family="'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive" font-weight="bold" font-size="16" fill="#F97316" filter="url(#sketch)">1.</text>
+  <!-- 模拟手绘粗线条 -->
+  <path d="M 54 44 Q 68 42 82 45" fill="none" stroke="#334155" stroke-width="4" stroke-linecap="round" filter="url(#sketch)"/>
+
+  <!-- 内容：二级标题 "1.1" -->
+  <text x="44" y="66" font-family="'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive" font-weight="bold" font-size="12" fill="#0EA5E9" filter="url(#sketch)">1.1</text>
+  <path d="M 66 63 Q 74 61 80 64" fill="none" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" filter="url(#sketch)"/>
+
+  <!-- 内容：二级标题 "1.2" -->
+  <text x="44" y="84" font-family="'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive" font-weight="bold" font-size="12" fill="#0EA5E9" filter="url(#sketch)">1.2</text>
+  <path d="M 66 81 Q 72 80 76 82" fill="none" stroke="#94A3B8" stroke-width="3" stroke-linecap="round" filter="url(#sketch)"/>
+
+  <!-- 装饰：右下角的手绘小对勾 (表示生成成功) -->
+  <path d="M 76 88 L 81 93 L 90 82" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#sketch)"/>
+</svg>
